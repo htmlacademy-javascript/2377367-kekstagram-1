@@ -12,6 +12,7 @@ const isPalindrom = (string) => {
   return tempString === reverseString;
 }
 
+const number = 10;
 const extactNumber = (string) => {
   let result = '';
   for (let i = 0; i < string.length; i++) {
@@ -19,7 +20,7 @@ const extactNumber = (string) => {
       result += string.at(i);
     }
   }
-  return parseInt(result, 10);
+  return parseInt(result, number);
 }
 
 
