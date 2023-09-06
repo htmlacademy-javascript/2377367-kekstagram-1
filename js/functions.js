@@ -1,3 +1,5 @@
+const NUMBER_MAX = 10;
+
 const isLessOrEqual = (string, length) => string.length <= length;
 
 const isPalindrom = (string) => {
@@ -14,14 +16,13 @@ const isPalindrom = (string) => {
 
 
 const extactNumber = (string) => {
-  const NUMBER_MAX = 10;
   let result = '';
   for (let i = 0; i < string.length; i++) {
-    if (!Number.isNaN(parseInt(string.at(i), 10))) {
+    if (!Number.isNaN(parseInt(string.at(i), NUMBER_MAX))) {
       result += string.at(i);
     }
   }
-  return parseInt(result, number);
+  return parseInt(result, NUMBER_MAX);
 }
 
 
