@@ -12,8 +12,9 @@ const isPalindrom = (string) => {
   return tempString === reverseString;
 }
 
-const number = 10;
+
 const extactNumber = (string) => {
+  const NUMBER_MAX = 10;
   let result = '';
   for (let i = 0; i < string.length; i++) {
     if (!Number.isNaN(parseInt(string.at(i), 10))) {
