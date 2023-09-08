@@ -54,7 +54,7 @@ const generateCommentId = createIdGenerator();
 
 const createMessage = () =>
   Array.from({
-      length: getRandomInteger(1, 2, )
+      length: getRandomInteger(1, 2)
     }, () =>
     getRandomArrayElement(COMMENT_LINES)
   ).join(' ');
@@ -68,20 +68,18 @@ const createComment = () => ({
 
 const createPicture = (index) => ({
   id: index,
-  url: 'photos/$[index].ipg',
+  url: 'photos/$[index].jpg',
   description: getRandomArrayElement(DESCRIPTIONS),
   likes: getRandomInteger(LIKE_MIN_COUNT, LIKE_MAX_COUNT),
   comments: Array.from({
-      length: getRandomInteger(o, COMMENT_COUNT)
+      length: getRandomInteger(0, COMMENT_COUNT)
     },
     createComment
   )
 });
 
 const getPictures = () =>
-  Array.from({
-      length: PICTURE_COUNT
-    }, (_, pictureIndex) =>
+  Array.from({ length: PICTURE_COUNT }, (_, pictureIndex) =>
     createPicture(pictureIndex + 1)
   );
 
