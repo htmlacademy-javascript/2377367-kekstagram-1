@@ -1,5 +1,5 @@
-import {getRandomInteger, getRandomArrayElement, createIdGenerator} from '.util.js';
-import{PICTURE_COUNT, AVATAR_COUNT, LIKE_MIN_COUNT, LIKE_MAX_COUNT, COMMENT_COUNT, COMMENT_LINES, DESCRIPTIONS, NAME} from '.data.js';
+import {getRandomInteger, getRandomArrayElement, createIdGenerator} from './util.js';
+import{PICTURE_COUNT, AVATAR_COUNT, LIKE_MIN_COUNT, LIKE_MAX_COUNT, COMMENT_COUNT, COMMENT_LINES, DESCRIPTIONS, NAME} from './data.js';
 
 const generateCommentId = createIdGenerator();
 
@@ -12,14 +12,14 @@ const createMessage = () =>
 
 const createComment = () => ({
   id: generateCommentId(),
-  avatar: 'img/avatar-${getRandomInteger(1, AVATAR_COUNT).svg',
+  avatar: `img/avatar-${getRandomInteger(1, AVATAR_COUNT)}.svg`,
   message: createMessage(),
-  name: getRandomArrayElement(NAMES),
+  name: getRandomArrayElement(NAME),
 });
 
 const createPicture = (index) => ({
   id: index,
-  url: 'photos/$[index].jpg',
+  url: `photos/${index}.jpg`,
   description: getRandomArrayElement(DESCRIPTIONS),
   likes: getRandomInteger(LIKE_MIN_COUNT, LIKE_MAX_COUNT),
   comments: Array.from({
