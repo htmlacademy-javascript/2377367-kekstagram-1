@@ -1,6 +1,6 @@
 const thumbnailTemplate = document
-.querySelector('#picture')
-.content.querySelector('.picture');
+  .querySelector('#picture')
+  .content.querySelector('.picture');
 const container = document.querySelector('.pictures');
 
 const createThumbnail = ({
@@ -27,4 +27,6 @@ const renderThumbnails = (pictures) => {
   });
   container.append(fragment);
 };
-export { renderThumbnails};
+export {
+  renderThumbnails
+};
