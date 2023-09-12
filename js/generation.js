@@ -1,5 +1,5 @@
-import {getRandomInteger, getRandomArrayElement, createIdGenerator} from '.util.js';
-import{PICTURE_COUNT, AVATAR_COUNT, LIKE_MIN_COUNT, LIKE_MAX_COUNT, COMMENT_COUNT, COMMENT_LINES, DESCRIPTIONS, NAME} from '.data.js';
+import {getRandomInteger, getRandomArrayElement, createIdGenerator} from './util.js';
+import{PICTURE_COUNT, AVATAR_COUNT, LIKE_MIN_COUNT, LIKE_MAX_COUNT, COMMENT_COUNT, COMMENT_LINES, DESCRIPTIONS, NAME} from './data.js';
 
 const generateCommentId = createIdGenerator();
 
