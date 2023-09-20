@@ -1,4 +1,4 @@
 import {getPictures} from './generation.js';
-import {renderThumbnails} from './thumbnail.js';
+import {renderGallery} from './gallery.js';
 
-renderThumbnails(getPictures());
+renderGallery(getPictures());
