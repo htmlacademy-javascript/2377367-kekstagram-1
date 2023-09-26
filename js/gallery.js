@@ -8,13 +8,16 @@ import {
 const container = document.querySelector('.pictures');
 
 const renderGallery = (pictures) => {
-  container.addEventListener('clik', (evt) => {
+  console.log(container);
+  container.addEventListener('click', (evt) => {
+    evt.preventDefault();
     const thumbnail = evt.target.closest('[data-thumbnail-id]');
     if (!thumbnail) {
       return;
     }
+
     const picture = pictures.find(
-      (item) => item.id === thumbnail.dataset.thumbnailId);
+      (item) => item.id === +thumbnail.dataset.thumbnailId);
     showBigPicture(picture);
   });
 
