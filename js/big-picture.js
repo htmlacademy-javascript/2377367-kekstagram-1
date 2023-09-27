@@ -50,7 +50,7 @@ const hideBigPicture = () =>{
   bigPicture.classList.add('hidden');
   body.classList.remove('modal-open');
   document.removeEventListener('keydown', onDocumentKeydown);
-  commentsShow = 0;
+  commentsShown = 0;
 };
 
 function onDocumentKeydown(evt){
