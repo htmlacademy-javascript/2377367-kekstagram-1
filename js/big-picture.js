@@ -9,7 +9,7 @@ const cancelButton = document.querySelector('.big-picture__cancel');
 let commentsShown = 0;
 const comments = [];
 
-function createComment({ avatar, name, message }) {
+function createComment({ avatar}) {
   const comment = document.createElement('li');
   comment.innerHTML =
     '<img class = "social__picture" src="" alt="" width="35" height="35">';
