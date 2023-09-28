@@ -7,7 +7,7 @@ const body = document.querySelector('body');
 const cancelButton = document.querySelector('.big-picture__cancel');
 
 let commentsShown = 0;
-let comments = [];
+const comments = [];
 
 function createComment({ avatar, name, message }) {
   const comment = document.createElement('li');
@@ -23,7 +23,6 @@ function createComment({ avatar, name, message }) {
 }
 
 
-
 const renderComments = () => {
   commentsShown += COMMENTS_PER_PORTION;
 
@@ -35,16 +34,16 @@ const renderComments = () => {
   }
 
 
-const fragment = document.createDocumentFragment();
-for (let i = 0; i < commentsShown; i++){
-  const commentElement = createComment(comments[i]);
-  fragment.append(commentElement);
-}
+  const fragment = document.createDocumentFragment();
+  for (let i = 0; i < commentsShown; i++){
+    const commentElement = createComment(comments[i]);
+    fragment.append(commentElement);
+  }
 
-commentList.innerHTML = '';
-commentList.append(fragment);
-commentCount.innerHTML = `${commentsShown} из <span class="comments-count">${comments.length}</span> комментариев`
-}
+  commentList.innerHTML = '';
+  commentList.append(fragment);
+  commentCount.innerHTML = `${commentsShown} из <span class="comments-count">${comments.length}</span> комментариев`;
+};
 
 const hideBigPicture = () =>{
   bigPicture.classList.add('hidden');
@@ -59,7 +58,7 @@ function onDocumentKeydown(evt){
     evt.preventDefault();
     hideBigPicture();
   }
-};
+}
 
 
 const onCancelButtonClik = () => {
