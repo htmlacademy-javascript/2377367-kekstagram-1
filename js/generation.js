@@ -1,12 +1,25 @@
-import {getRandomInteger, getRandomArrayElement, createIdGenerator} from './util.js';
-import{PICTURE_COUNT, AVATAR_COUNT, LIKE_MIN_COUNT, LIKE_MAX_COUNT, COMMENT_COUNT, COMMENT_LINES, DESCRIPTIONS, NAME} from './data.js';
+import {
+  getRandomInteger,
+  getRandomArrayElement,
+  createIdGenerator
+} from './util.js';
+import {
+  PICTURE_COUNT,
+  AVATAR_COUNT,
+  LIKE_MIN_COUNT,
+  LIKE_MAX_COUNT,
+  COMMENT_COUNT,
+  COMMENT_LINES,
+  DESCRIPTIONS,
+  NAME
+} from './data.js';
 
 const generateCommentId = createIdGenerator();
 
 const createMessage = () =>
   Array.from({
-      length: getRandomInteger(1, 2)
-    }, () =>
+    length: getRandomInteger(1, 2)
+  }, () =>
     getRandomArrayElement(COMMENT_LINES)
   ).join(' ');
 
@@ -23,15 +36,19 @@ const createPicture = (index) => ({
   description: getRandomArrayElement(DESCRIPTIONS),
   likes: getRandomInteger(LIKE_MIN_COUNT, LIKE_MAX_COUNT),
   comments: Array.from({
-      length: getRandomInteger(0, COMMENT_COUNT)
-    },
-    createComment
+    length: getRandomInteger(0, COMMENT_COUNT)
+  },
+  createComment
   )
 });
 
 const getPictures = () =>
-  Array.from({ length: PICTURE_COUNT }, (_, pictureIndex) =>
+  Array.from({
+    length: PICTURE_COUNT
+  }, (_, pictureIndex) =>
     createPicture(pictureIndex + 1)
   );
 
-export {getPictures};
+export {
+  getPictures
+};
