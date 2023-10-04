@@ -3,8 +3,8 @@ import { resetScale } from './scale.js';
 import { resetEffects } from './effect.js';
 
 const SubmitButtonText = {
-  IDLE: 'Отправить',
-  SENDING: 'Отправить...'
+  IDLE: 'Опубликовать',
+  SENDING: 'Опубликовываю...'
 };
 
 const MAX_HASHTAG_COUNT = 5;
@@ -18,7 +18,7 @@ const cancelButton = document.querySelector('#upload-cancel');
 const fileField = document.querySelector('#upload-file');
 const hashtagField = document.querySelector('.text__hashtags');
 const commentField = document.querySelector('.text__description');
-const submitButton = document.querySelector('.upload-submit');
+const submitButton = document.querySelector('.img-upload__submit');
 
 const pristine = new Pristine(form, {
   classTo: 'img-upload__field-wrapper',
