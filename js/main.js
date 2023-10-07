@@ -2,7 +2,7 @@ import {renderGallery} from './gallery.js';
 import {hideModal,setOnFormSubmit} from './form.js';
 import { getData, sendData } from './api.js';
 import { showAlert } from './util.js';
-import { showSuccessMessage} from './message.js';
+import { showSuccessMessage, showErrorMessage} from './message.js';
 
 
 setOnFormSubmit (async (data) => {
@@ -21,4 +21,4 @@ try {
   renderGallery(data);
 } catch (err) {
   showAlert(err.message);
-};
+}

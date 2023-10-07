@@ -19,4 +19,6 @@ const showAlert = (message) => {
   }, ALERT_SHOW_TIME);
 };
 
-export { showAlert};
+const isEscape = (evt) => evt.key === 'Escape';
+
+export { showAlert, isEscape};
