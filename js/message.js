@@ -1,4 +1,6 @@
-import { isEscape } from './util.js';
+import {
+  isEscape
+} from './util.js';
 
 const ALERT_SHOW_TIME = 5000;
 
@@ -72,6 +74,7 @@ const showSuccessMessage = () => {
       onCloseMessageClick();
     }
   };
+
   function onCloseMessageClick() {
     successContainer.remove();
     successCloseButton.removeEventListener('click', onCloseMessageClick);
@@ -88,4 +91,7 @@ const showSuccessMessage = () => {
   }, ALERT_SHOW_TIME);
 };
 
-export { showErrorMessage, showSuccessMessage};
+export {
+  showErrorMessage,
+  showSuccessMessage
+};
