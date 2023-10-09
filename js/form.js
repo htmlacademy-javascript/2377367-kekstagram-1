@@ -1,5 +1,11 @@
+/* eslint-disable no-undef */
 import { resetScale } from './scale.js';
 import { resetEffects } from './effect.js';
+
+const SubmitButtonText = {
+  IDLE: 'Опубликовать',
+  SENDING: 'Опубликовываю...'
+};
 
 const MAX_HASHTAG_COUNT = 5;
 const VALID_SYMBOLS = /^#[a-zа-я0-9]{1,19}$/i;
@@ -12,6 +18,7 @@ const cancelButton = document.querySelector('#upload-cancel');
 const fileField = document.querySelector('#upload-file');
 const hashtagField = document.querySelector('.text__hashtags');
 const commentField = document.querySelector('.text__description');
+const submitButton = document.querySelector('.img-upload__submit');
 
 const pristine = new Pristine(form, {
   classTo: 'img-upload__field-wrapper',
@@ -71,19 +78,32 @@ const validateTags = (value) => {
   return hasValidCount(tags) && hasUniqueTags(tags) && tags.every(isValidTag);
 };
 
-pristine.addValidator(
-  hashtagField,
-  validateTags,
-  TAG_ERROR_TEXT
-);
+const blockSubmitButton = () => {
+  submitButton.disabled = true;
+  submitButton.textContent = SubmitButtonText.SENDING;
+};
 
-const onFormSubmit = (evt) => {
-  evt.preventDefault();
-  pristine.validate();
+const unblockSubmitButton = () => {
+  submitButton.disabled = false;
+  submitButton.textContent = SubmitButtonText.IDLE;
+};
+
+pristine.addValidator(hashtagField, validateTags, TAG_ERROR_TEXT);
+
+const setOnFormSubmit = (cb) => {
+  form.addEventListener('submit', async (evt) => {
+    evt.preventDefault();
+    const isValid = pristine.validate();
+
+    if (isValid){
+      blockSubmitButton();
+      await cb(new FormData (form));
+      unblockSubmitButton();
+    }
+  });
 };
 
 fileField.addEventListener('change', onFileInputChange);
 cancelButton.addEventListener('click', onCancelButtonClik);
-form.addEventListener('submit', onFormSubmit);
 
-export {hideModal, onFormSubmit};
+export { setOnFormSubmit, hideModal };
