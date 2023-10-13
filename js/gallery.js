@@ -7,21 +7,23 @@ import {
 
 const container = document.querySelector('.pictures');
 
-const renderGallery = (pictures) => {
+let pictures = [];
 
-  container.addEventListener('click', (evt) => {
+const onContainerClick = (evt) => {
+  const thumbnail = evt.target.closest('[data-thumbnail-id]');
+  if (!thumbnail) {
+    return;
+  }
+  evt.preventDefault();
+  const picture = pictures.find(
+    (item) => item.id === +thumbnail.dataset.thumbnailId);
+  showBigPicture(picture);
+};
 
-    const thumbnail = evt.target.closest('[data-thumbnail-id]');
-    if (!thumbnail) {
-      return;
-    }
-    evt.preventDefault();
-    const picture = pictures.find(
-      (item) => item.id === +thumbnail.dataset.thumbnailId);
-    showBigPicture(picture);
-  });
-
+const renderGallery = (currentPictures) => {
+  pictures = currentPictures;
   renderThumbnails(pictures, container);
+  container.addEventListener('click', onContainerClick);
 };
 
 export {
