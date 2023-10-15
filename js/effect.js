@@ -53,20 +53,14 @@ let chosenEffect = DEFAULT_EFFECT;
 const imageElement = document.querySelector('.img-upload__preview img');
 const effectsElement = document.querySelector('.effects');
 const sliderElement = document.querySelector('.effect-level__slider');
-const sliderContainerElement = document.querySelector('.img-upload__effect-level');
+
 const effectLevelElement = document.querySelector('.effect-level__value');
+const formElement = document.querySelector('.img-upload__form');
 
 const isDefault = () => chosenEffect === DEFAULT_EFFECT;
 
-const showSlider = () => {
-  sliderContainerElement.classList.remove('hidden');
-};
-
-const hideSlider = () => {
-  sliderContainerElement.classList.add('hidden');
-};
-
 const updateSlider = () => {
+  sliderElement.classList.remove('hidden');
   sliderElement.noUiSlider.updateOptions({
     range: {
       min: chosenEffect.min,
@@ -77,9 +71,7 @@ const updateSlider = () => {
   });
 
   if (isDefault()) {
-    hideSlider();
-  } else {
-    showSlider();
+    sliderElement.classList.add('hidden');
   }
 };
 
@@ -93,10 +85,15 @@ const onEffectsChange = (evt) => {
 };
 
 const onSliderUpdate = () => {
+  imageElement.style.filter = 'none';
+  imageElement.className = '';
+  effectLevelElement.value = '';
+  if (isDefault()) {
+    return;
+  }
   const sliderValue = sliderElement.noUiSlider.get();
-  imageElement.style.filter = isDefault() ?
-    DEFAULT_EFFECT.style :
-    `${chosenEffect.style}(${sliderValue}${chosenEffect.unit})`;
+  imageElement.style.filter = `${chosenEffect.style}(${sliderValue}${chosenEffect.unit})`;
+  imageElement.classList.add(`effects__preview--${chosenEffect.name}`);
   effectLevelElement.value = sliderValue;
 };
 
@@ -114,8 +111,9 @@ noUiSlider.create(sliderElement, {
   step: DEFAULT_EFFECT.step,
   connect: 'lower',
 });
-hideSlider();
+updateSlider();
 
+formElement.addEventListener('change', onEffectsChange);
 effectsElement.addEventListener('change', onEffectsChange);
 sliderElement.noUiSlider.on('update', onSliderUpdate);
 

@@ -1,15 +1,11 @@
 import {
-  isEscape
+  isEscapeKey
 } from './util.js';
 
 const ALERT_SHOW_TIME = 5000;
-
-
 const errorContainerTemplate = document.querySelector('#error')
   .content
   .querySelector('.error');
-
-
 const successContainerTemplate = document.querySelector('#success')
   .content
   .querySelector('.success');
@@ -24,7 +20,7 @@ const showErrorMessage = () => {
   document.body.append(errorContainer);
 
   const onPopupEscKeydown = (evt) => {
-    if (isEscape(evt)) {
+    if (isEscapeKey(evt)) {
       evt.preventDefault();
       onCloseAlertClick();
     }
@@ -62,7 +58,7 @@ const showSuccessMessage = () => {
   document.body.append(successContainer);
 
   const onPopupEscKeydown = (evt) => {
-    if (isEscape(evt)) {
+    if (isEscapeKey(evt)) {
       evt.preventDefault();
       onCloseMessageClick();
     }
@@ -95,5 +91,3 @@ export {
   showErrorMessage,
   showSuccessMessage
 };
-
-//jfhfvhjf
