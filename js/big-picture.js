@@ -18,7 +18,6 @@ const createComment = ({ avatar, name, message }) => {
   comment.innerHTML =
     '<img class="social__picture" src="" alt="" width="35" height="35"><p class="social__text"></p>';
   comment.classList.add('social__comment');
-
   comment.querySelector('.social__picture').src = avatar;
   comment.querySelector('.social__picture').alt = name;
   comment.querySelector('.social__text').textContent = message;
@@ -82,7 +81,6 @@ const showBigPicture = (data) => {
   body.classList.add('modal-open');
   commentsLoader.classList.add('hidden');
   document.addEventListener('keydown', onEscKeyDown);
-
   renderPictureDetails(data);
   comments = data.comments;
   if (comments.length > 0) {
