@@ -48,7 +48,6 @@ const showErrorMessage = () => {
   }, ALERT_SHOW_TIME);
 };
 
-
 const showSuccessMessage = () => {
   const successContainer = successContainerTemplate.cloneNode(true);
   const successCloseButton = successContainer.querySelector('.success__button');

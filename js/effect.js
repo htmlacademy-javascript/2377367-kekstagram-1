@@ -47,6 +47,7 @@ const EFFECTS = [{
   unit: '',
 },
 ];
+
 const DEFAULT_EFFECT = EFFECTS[0];
 let chosenEffect = DEFAULT_EFFECT;
 
